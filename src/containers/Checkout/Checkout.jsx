@@ -6,27 +6,15 @@ import AdressForm from './AdressForm';
 import PaymentForm from './PaymentForm';
 import { Link, useHistory } from 'react-router-dom';
 
+
 const steps = ['Endereço de envio', 'Detalhes de pagamento'];
 
-const Checkout = ({ cart }) => {
+const Checkout = ({}) => {
     const [activeStep, setActiveStep] = useState(0);
-    const [checkoutToken, setCheckoutToken] = useState(null);
     const [shippingData, setShippingData] = useState({});
     const classes = useStyles();
-    const history = useHistory();
 
-    useEffect(() => {
-        const generateToken = async () => {
-            try {
-                const token = await commerce.checkout.generateToken(cart.id, { type: 'cart' });
 
-                setCheckoutToken(token);
-            } catch(error) {
-
-            }
-        }
-        generateToken();
-    }, [cart]);
 
     const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
     const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -35,18 +23,18 @@ const Checkout = ({ cart }) => {
         setShippingData(data);
         nextStep();
     }
+    const back = () => {
+        backStep();
+    }
 
     const Confirmation = () => (
-        <div>
-            Confirmation
-        </div>
+        <>aa</>
     )
 
     const Form = () => activeStep == 0
-        ? <AdressForm checkoutToken={checkoutToken} next={next} />
-        : <PaymentForm checkoutToken={checkoutToken} shippingData={shippingData} />
+        ? <AdressForm  next={next} />
+        : <PaymentForm  next={next} back={back} shippingData={shippingData}/>
         
-
 
     return (
         <>
@@ -54,7 +42,7 @@ const Checkout = ({ cart }) => {
             <main className={classes.layout}>
                 <Paper className={classes.paper}>
                     <Typography variant="h4" align="center">Finalizar Compra</Typography>
-                    <Stepper activeStep={0} className={classes.stepper}>
+                    <Stepper activeStep={activeStep} className={classes.stepper}>
                         {steps.map((step) => (
                             <Step key={step}>
                                 <StepLabel>{step}</StepLabel>
@@ -67,5 +55,4 @@ const Checkout = ({ cart }) => {
         </>
     )
 }
-
 export default Checkout;

@@ -8,28 +8,8 @@ import { commerce } from '../../libs/commerce';
 import FormInput from './CustomTextField';
 
 
-const AdressForm = ({ checkoutToken, next }) => {
+const AdressForm = ({next}) => {
     const methods = useForm();
-    const [shippingCountries, setShippingCountries] = useState([]);
-    const [shippingCountry, setShippingCountry] = useState('');
-    const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
-    const [shippingSubdivision, setShippingSubdivision] = useState('');
-    const [shippingOptions, setShippingOptions] = useState([]);
-    const [shippingOption, setShippingOption] = useState('');
-
-    const countries = Object.entries(shippingCountries).map(([code, name]) => ({ id: code, label: name }));
-
-    const fetchShippingCountries = async (checkoutTokenId) => {
-        const { countries } = await commerce.services.localeListShippingCountries(checkoutTokenId);
-
-        console.log(countries);
-        setShippingCountries(countries);
-        setShippingCountry(Object.keys(countries));
-    };
-
-    useEffect(() => {
-        
-    }, []);
 
 
     return (
@@ -40,18 +20,11 @@ const AdressForm = ({ checkoutToken, next }) => {
                     <Grid container spacing={3}>
                         <FormInput required name='Nome' label='Nome' />
                         <FormInput required name='Email' label='Email' />
+                        <FormInput required name='Telefone' label='Telefone' />
                         <FormInput required name='Cidade' label='Cidade' />
                         <FormInput required name='Endereço' label='Endereço' />
                         <FormInput required name='CEP' label='CEP' />
                         <Grid item xs={12} sm={6}>
-                            <InputLabel>País de Envio</InputLabel>
-                            <Select value={shippingCountry} fullWidth onChange={(e) => setShippingCountry(e.target.value)}>
-                                {countries.map((country) => (
-                                    <MenuItem key={country.id} value={country.id}>
-                                        {country.label}
-                                    </MenuItem>
-                                ))}
-                            </Select>
 
                         </Grid>
                     </Grid>

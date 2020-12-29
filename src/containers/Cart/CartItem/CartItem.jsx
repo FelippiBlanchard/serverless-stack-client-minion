@@ -23,4 +23,4 @@ const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart  }) => {
     )
 }
 
-export default CartItem
+export default CartItem;

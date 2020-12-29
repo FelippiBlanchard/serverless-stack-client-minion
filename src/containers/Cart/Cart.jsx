@@ -4,6 +4,8 @@ import useStyles from './stylesCart';
 import CartItem from './CartItem/CartItem';
 import {Link} from 'react-router-dom';
 
+import Checkout from '../Checkout/Checkout';
+
 const Cart = ({ cart, handleUpdateCartQty ,handleRemoveFromCart ,handleEmptyCart} ) => {
     const classes = useStyles();
 
@@ -28,8 +30,12 @@ const Cart = ({ cart, handleUpdateCartQty ,handleRemoveFromCart ,handleEmptyCart
                     Subtotal: {cart.subtotal.formatted_with_symbol}
                 </Typography>
                 <div>
-                    <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={handleEmptyCart}>Carrinho Vazio</Button>
-                    <Button component={Link} to ="/checkout" className={classes.checkoutButton} size="large" type="button" variant="contained" color="primary">Finalizar Compra</Button>
+                    <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={handleEmptyCart}>Esvaziar Carrinho</Button>
+                    <Button component={Link} to ="/checkout" className={classes.checkoutButton} size="large" type="button" variant="contained" color="primary">
+                        Finalizar Compra
+                        
+                    
+                    </Button>
                 </div>
 
             </div>

@@ -9,7 +9,7 @@
 }
 
 :root {
-  --primary-color: burlywood;
+  --primary-color: rgb(116, 85, 0);
   --light-gray: rgb(17, 12, 12);
   --text-color: rgb(16, 42, 82);
   --border: rgb(7, 20, 39);

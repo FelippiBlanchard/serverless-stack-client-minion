@@ -53,17 +53,12 @@ export default function HomeCart() {
   return (
     <div className="HomeCart">
       <div className="py-3">
-        <Switch>
           <Route exact path="/cart">
             <Cart cart={cart}
               handleUpdateCartQty={handleUpdateCartQty}
               handleRemoveFromCart={handleRemoveFromCart}
               handleEmptyCart={handleEmptyCart} />
           </Route>
-          <Route exact path="/checkout">
-            <Checkout cart={cart}/>
-          </Route>
-        </Switch>
       </div>
     </div>
   );
