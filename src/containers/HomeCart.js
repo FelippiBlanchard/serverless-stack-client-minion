@@ -8,9 +8,10 @@ import { commerce } from '../libs/commerce';
 import Products from './Products/Products';
 import Navbar from './Navbar';
 import Cart from './Cart/Cart';
+import Checkout from './Checkout/Checkout'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-export default function Home() {
+export default function HomeCart() {
   const { isAuthenticated } = useAppContext();
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
@@ -25,11 +26,24 @@ export default function Home() {
     setCart(await commerce.cart.retrieve())
   }
 
-  const handleAddToCart = async (productId, quantity) => {
-    const item = await commerce.cart.add(productId, quantity);
+  const handleUpdateCartQty = async (productId, quantity) => {
+    const { cart } = await commerce.cart.update(productId, { quantity });
 
-    setCart(item.cart);
+    setCart(cart);
   }
+
+  const handleRemoveFromCart = async (productId) => {
+    const { cart } = await commerce.cart.remove(productId);
+
+    setCart(cart);
+  }
+
+  const handleEmptyCart = async () => {
+    const { cart } = await commerce.cart.empty();
+
+    setCart(cart);
+  }
+
   useEffect(() => {
     fetchProducts();
     fetchCart();
@@ -37,10 +51,19 @@ export default function Home() {
 
 
   return (
-
-    <div className="Home">
+    <div className="HomeCart">
       <div className="py-3">
-        <Products products={products} onAddToCart={handleAddToCart} />
+        <Switch>
+          <Route exact path="/cart">
+            <Cart cart={cart}
+              handleUpdateCartQty={handleUpdateCartQty}
+              handleRemoveFromCart={handleRemoveFromCart}
+              handleEmptyCart={handleEmptyCart} />
+          </Route>
+          <Route exact path="/checkout">
+            <Checkout cart={cart}/>
+          </Route>
+        </Switch>
       </div>
     </div>
   );
