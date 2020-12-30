@@ -7,21 +7,18 @@ import { LinkContainer, Link } from "react-router-bootstrap";
 import { AppContext } from "./libs/contextLib";
 import { Auth } from "aws-amplify";
 import { useHistory, useLocation } from "react-router-dom";
-import { onError } from "./libs/errorLib";
 import { ShoppingCart } from '@material-ui/icons';
-import { AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography } from '@material-ui/core';
-import logo from './images/apple-touch-icon.png';
+import {  IconButton, Badge} from '@material-ui/core';
+
 
 import { commerce } from './libs/commerce';
-import Products from './containers/Products/Products';
-import Home from './containers/Home';
+
 
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const history = useHistory();
-  const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
   const location = useLocation();
 
@@ -79,6 +76,7 @@ function App() {
                 <LinkContainer to="/cart">
                   <IconButton aria-label="Mostrar minions no carrinho" color="inherit">
                     <Badge badgeContent={cart.total_items} color="secondary">
+                      
                       <ShoppingCart />
                     </Badge>
                   </IconButton>

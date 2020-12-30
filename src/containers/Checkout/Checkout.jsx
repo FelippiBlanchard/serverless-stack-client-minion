@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Paper, Stepper, Step, StepLabel, Typography} from '@material-ui/core';
 import useStyles from './stylesCheckout';
-import { commerce } from '../../libs/commerce';
 import AdressForm from './AdressForm';
 import PaymentForm from './PaymentForm';
-import { Link, useHistory } from 'react-router-dom';
+import Confirmation from './Confirmation';
 
 
 const steps = ['Endereço de envio', 'Detalhes de pagamento'];
@@ -23,17 +22,20 @@ const Checkout = ({}) => {
         setShippingData(data);
         nextStep();
     }
+    const next2 = () => {
+        nextStep();
+    }
     const back = () => {
         backStep();
     }
 
-    const Confirmation = () => (
-        <>aa</>
-    )
+    const Finish = () => shippingData == undefined
+        ? 'Erro, atualize a página e tente novamente'
+        : <Confirmation shippingData={shippingData}/>
 
     const Form = () => activeStep == 0
         ? <AdressForm  next={next} />
-        : <PaymentForm  next={next} back={back} shippingData={shippingData}/>
+        : <PaymentForm  next2={next2} back={back} shippingData={shippingData}/>
         
 
     return (
@@ -49,7 +51,7 @@ const Checkout = ({}) => {
                             </Step>
                         ))}
                     </Stepper>
-                    {activeStep == steps.length ? <Confirmation /> : <Form />}
+                    {activeStep == steps.length ? <Finish /> : <Form />}
                 </Paper>
             </main>
         </>

@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
-import ListGroup from "react-bootstrap/ListGroup";
 import { useAppContext } from "../libs/contextLib";
-import { onError } from "../libs/errorLib";
+
 import "./Home.css";
-import { API } from "aws-amplify";
+
 import { commerce } from '../libs/commerce';
-import Products from './Products/Products';
-import Navbar from './Navbar';
+
 import Cart from './Cart/Cart';
-import Checkout from './Checkout/Checkout'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 
 export default function HomeCart() {
   const { isAuthenticated } = useAppContext();
@@ -53,12 +50,10 @@ export default function HomeCart() {
   return (
     <div className="HomeCart">
       <div className="py-3">
-          <Route exact path="/cart">
             <Cart cart={cart}
               handleUpdateCartQty={handleUpdateCartQty}
               handleRemoveFromCart={handleRemoveFromCart}
               handleEmptyCart={handleEmptyCart} />
-          </Route>
       </div>
     </div>
   );

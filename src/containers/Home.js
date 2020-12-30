@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useAppContext } from "../libs/contextLib";
 import "./Home.css";
 import { commerce } from '../libs/commerce';
 import Products from './Products/Products';
+import { Button } from '@material-ui/core';
+
+import { Link } from 'react-router-dom';
 
 
 export default function Home() {
-  const { isAuthenticated } = useAppContext();
-  const [isLoading, setIsLoading] = useState(true);
+
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
 
@@ -22,7 +23,6 @@ export default function Home() {
 
   const handleAddToCart = async (productId, quantity) => {
     const item = await commerce.cart.add(productId, quantity);
-
     setCart(item.cart);
   }
   useEffect(() => {
@@ -36,6 +36,9 @@ export default function Home() {
     <div className="Home">
       <div className="py-3">
         <Products products={products} onAddToCart={handleAddToCart} />
+        <div class="d-flex justify-content-center">
+          <Button component={Link} to="/cart" variant="contained" color="primary">ir ao Carrinho</Button>
+        </div>
       </div>
     </div>
   );

@@ -4,7 +4,6 @@ import useStyles from './stylesCart';
 import CartItem from './CartItem/CartItem';
 import {Link} from 'react-router-dom';
 
-import Checkout from '../Checkout/Checkout';
 
 const Cart = ({ cart, handleUpdateCartQty ,handleRemoveFromCart ,handleEmptyCart} ) => {
     const classes = useStyles();
@@ -33,8 +32,6 @@ const Cart = ({ cart, handleUpdateCartQty ,handleRemoveFromCart ,handleEmptyCart
                     <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={handleEmptyCart}>Esvaziar Carrinho</Button>
                     <Button component={Link} to ="/checkout" className={classes.checkoutButton} size="large" type="button" variant="contained" color="primary">
                         Finalizar Compra
-                        
-                    
                     </Button>
                 </div>
 
@@ -48,7 +45,7 @@ const Cart = ({ cart, handleUpdateCartQty ,handleRemoveFromCart ,handleEmptyCart
         <Container>
 
             <div className={classes.toolbar} />
-            <Typography className={classes.title} variant="h3" gutterBottom> Seu Carrinho de minions</Typography>
+            <Typography className={classes.title} variant="h2" gutterBottom> Seu Carrinho de minions</Typography>
             { !cart.line_items.length ? <EmptyCart /> : <FilledCart />}
         </Container>
     )

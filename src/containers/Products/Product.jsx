@@ -22,7 +22,8 @@ const Product = ({ product, onAddToCart }) => {
                 <Typography dangerouslySetInnerHTML={{ __html: product.description}} variant="body2" color="textSecondary"/>
             </CardContent>
             <CardActions disableSpacing className={classes.cardActions}>
-                <IconButton aria-label="Add ao carrinho" onClick={() => onAddToCart(product.id, 1)}>
+                Adicione ao carrinho
+                <IconButton aria-label="Add ao carrinho" onClick={() => {alert("Adicionado ao carrinho! OBS: (Acesse o carrinho no canto superior direito para finalizar compra)"); onAddToCart(product.id, 1)}}>
                     <AddShoppingCart />
                 </IconButton>
             </CardActions>

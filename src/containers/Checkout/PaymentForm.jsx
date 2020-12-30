@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { commerce } from '../../libs/commerce';
 import { makeStyles } from '@material-ui/core/styles';
+
 import { Button, Grid, Typography } from '@material-ui/core';
 import { useForm, FormProvider } from 'react-hook-form';
 
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
 });
 
 
-const PaymentForm = ({ next, back, shippingData }) => {
+const PaymentForm = ({ next2, back, shippingData }) => {
     const [cart, setCart] = useState({});
     const classes = useStyles();
     const methods = useForm();
@@ -36,7 +37,6 @@ const PaymentForm = ({ next, back, shippingData }) => {
 
     if (!cart.line_items) return 'Carregando ... ';
     if (!shippingData) return 'Carregando ... ';
-    console.log({ shippingData });
 
     return (
         <>
@@ -62,7 +62,7 @@ const PaymentForm = ({ next, back, shippingData }) => {
             <FormProvider {...methods}>
                 <br />
                 <Button onClick={() => back()} variant="contained"  >Consertar</Button>
-                <form onSubmit={methods.handleSubmit((shippingData) => next({ shippingData }))}>
+                <form onSubmit={() => next2()}>
                     <br />
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                         <Button component={Link} to="/cart" variant="outlined">Voltar para o Carrinho</Button>
