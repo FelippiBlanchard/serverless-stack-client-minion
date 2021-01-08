@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/serverless-stack-client-minion/static/css/main.123e076a.chunk.css",
+    "main.js": "/serverless-stack-client-minion/static/js/main.d3389b0c.chunk.js",
+    "main.js.map": "/serverless-stack-client-minion/static/js/main.d3389b0c.chunk.js.map",
+    "runtime-main.js": "/serverless-stack-client-minion/static/js/runtime-main.bbf8ceda.js",
+    "runtime-main.js.map": "/serverless-stack-client-minion/static/js/runtime-main.bbf8ceda.js.map",
+    "static/js/2.df22d5af.chunk.js": "/serverless-stack-client-minion/static/js/2.df22d5af.chunk.js",
+    "static/js/2.df22d5af.chunk.js.map": "/serverless-stack-client-minion/static/js/2.df22d5af.chunk.js.map",
+    "static/js/3.506ed504.chunk.js": "/serverless-stack-client-minion/static/js/3.506ed504.chunk.js",
+    "static/js/3.506ed504.chunk.js.map": "/serverless-stack-client-minion/static/js/3.506ed504.chunk.js.map",
+    "index.html": "/serverless-stack-client-minion/index.html",
+    "static/css/main.123e076a.chunk.css.map": "/serverless-stack-client-minion/static/css/main.123e076a.chunk.css.map",
+    "static/js/2.df22d5af.chunk.js.LICENSE.txt": "/serverless-stack-client-minion/static/js/2.df22d5af.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/serverless-stack-client-minion/static/media/minions wallpaper.141df000.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bbf8ceda.js",
+    "static/js/2.df22d5af.chunk.js",
+    "static/css/main.123e076a.chunk.css",
+    "static/js/main.d3389b0c.chunk.js"
+  ]
+}
