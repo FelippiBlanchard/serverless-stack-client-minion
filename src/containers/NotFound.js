@@ -1,5 +1,6 @@
 import React from "react";
 import "./NotFound.css";
+import { Button } from '@material-ui/core';
 
 export default function NotFound() {
   return (
