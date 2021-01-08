@@ -2,7 +2,7 @@
   "name": "notes-app-client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://felippiblanchard.github.io/serverless-stack-client-minion/",
+  "homepage": "https://felippiblanchard.github.io/",
   "dependencies": {
     "@chec/commerce.js": "^2.2.0",
     "@material-ui/core": "^4.11.2",
