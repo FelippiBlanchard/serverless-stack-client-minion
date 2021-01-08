@@ -10,7 +10,7 @@ const Confirmation = ({ shippingData }) => {
     var e = {
         to_name: shippingData.data.Nome,
         to_email: shippingData.data.Email,
-        message: ''
+        message: (shippingData.data.Endereço, shippingData.data.Numero)
     };
 
     function sendEmail(e) {
